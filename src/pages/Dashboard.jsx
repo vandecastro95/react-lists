@@ -7,6 +7,7 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 
 import DashboardList from '../containers/DashboardList';
+import UserContainer from '../containers/UserContainer';
 
 const useStyles = makeStyles({
     dashboardHeader: {
@@ -22,7 +23,11 @@ const Dashboard = () => {
         <Grid
             container
             spacing={4}
-            className={classes.dashboardHeader}>
+            className={classes.dashboardHeader}
+        >
+            <Grid item xs={12} sm={12} md={11} lg={10} xl={8}>
+                <UserContainer />
+            </Grid>
             <Grid item xs={12} sm={12} md={11} lg={10} xl={8}>
                 <DashboardList />
             </Grid>

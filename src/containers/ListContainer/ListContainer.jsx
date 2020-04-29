@@ -9,6 +9,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import SvgIcon from '@material-ui/core/SvgIcon';
 
+import Listitem from '../../components/ListItem';
+import List from './List.jsx'
+
 const useStyles = makeStyles({
     list: {
         background: '#FFFFFF',
@@ -16,13 +19,14 @@ const useStyles = makeStyles({
         margin: '5px',
         minWidth: '200px',
         height: '150px',
-        borderRadius: '3px'
+        borderRadius: '10px'
     },
     subtitle1: {
     }
 });
 
 const COLORS = [
+    '#78909c',
     '#FF5252',
     '#FF80AB',
     '#E040FB',
@@ -73,62 +77,27 @@ function lightenDarkenColor(col, amt) {
 
 const ListContainer = (props) => {
     const classes = useStyles();
-    const lightColor = lightenDarkenColor(COLORS[props.color1], 40);
-    const darkColor = lightenDarkenColor(COLORS[props.color1], -15)
+    //const lightColor = lightenDarkenColor(COLORS[props.color[0]], 50);
+    //const darkColor = lightenDarkenColor(COLORS[props.color1], -15)
 
     return (
-        <Paper
-            elevation={0}
-            className={classes.list}
-            style={{
-                background: `linear-gradient(90deg, ${darkColor}, ${lightColor})`,
-                color: '#FFFFFF',
-                display: 'flex',
-                padding: '16px'
-            }}
-        >
-            {console.log(lightColor, darkColor)}
-            <div>
-                <Typography
-                    variant="body1"
-                    style={{
-                        fontSize: '22px'
-                    }}
-                >
-                    {props.name}
-                </Typography>
-                <Typography
-                    variant="body2"
-                    style={{
-                        fontSize: '14px',
-                        fontWeight: '100'
-                    }}
-                >
-                    Rev is a startup based in San Francisco and Austin building the most
-                    technologically-advanced platform for freelance work. We're looking
-                    for enthusiastic and ...
-                    </Typography>
-            </div>
-            <div
-                style={{
-                    marginTop: '9px'
-                }}
-            >
-                <IconButton
-                    aria-label="delete"
-                    style={{
-                        background: `${darkColor}`,
-                        color: `${lightColor}`,
-                        marginRight: '10px',
-                        borderRadius: '4px'
-                    }}
-                >
-                    <SvgIcon>
-                        <path d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z" />
-                    </SvgIcon>
-                </IconButton>
-            </div>
-        </Paper>
+        <Grid container spacing={2}>
+            {console.log(List)}
+            {
+                List.map((item, index) => {
+                    return (
+                        <Grid item xs={12} sm={10} md={6} lg={4} xl={4} key={index}>
+                            <Listitem
+                                title={item.name}
+                                subtitle={item.subtitle ? item.subtitle : 'You might be familiar with normalize.css, a collection of HTML element and attribute style-normalizations.'}
+                                color={COLORS[item.color[0]]}
+                                lightColor={lightenDarkenColor(COLORS[item.color[0]], 50)}
+                            />
+                        </Grid>
+                    )
+                })
+            }
+        </Grid>
     )
 }
 

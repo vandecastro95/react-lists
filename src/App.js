@@ -8,7 +8,8 @@ import Header from './containers/Header';
 
 const useStyles = makeStyles({
     root: {
-        background: 'linear-gradient(120deg, #20242A, #171A21)',
+        //background: 'linear-gradient(120deg, #20242A, #171A21)',
+        background: '#EDF9F5',
         width: '100%',
         height: '100vh',
         overflowX: 'hidden'

@@ -13,7 +13,8 @@ const useStyles = makeStyles({
     },
     header: {
         color: '#1A1D22',
-        background: '#171A21',
+        //background: '#171A21',
+        background: '#ffffff',
         alignItems: 'center',
         display: 'flex',
     }
